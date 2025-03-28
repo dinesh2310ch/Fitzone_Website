@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Info</title>
+    <link rel="icon" href="Images/nutrition.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="diet2.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="container">
+       <div class="h1">
+        <img width="70px" height="70px" src="Images/nutrition.png" alt="">
+        <h1>Nutrition Information</h1>
+       </div>
+        <div id="description">
+            <h2>About This Tool</h2>
+            <p>This tool allows you to get nutritional information about different food items. Simply enter the name of the food item and click "Get Nutrition Info" to see its carbohydrate, protein, and fat content. You can also view a chart representing the nutritional data and see your search history for easy reference.</p>
+        </div>
+        <div class="h11">
+            <label for="food-input">Enter food item:</label>
+           <div class="h111">
+            <input type="text" id="food-input" placeholder="Enter food item">
+            <button class="but" onclick="fetchNutritionData()">Get Nutrition Info</button>
+           </div>
+        </div>
+
+        <div id="results"></div>
+
+        <div id="chart-container">
+            <h2>Nutrition Chart</h2>
+            <canvas id="nutritionChart"></canvas>
+        </div>
+
+        <div id="history">
+            <h2>Search History</h2>
+            <ul id="history-list"></ul>
+        </div>
+        <div class="back">
+            <button class="but" onclick="gotoback()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        const historyList = [];
+        let chart;
+
+        function fetchNutritionData() {
+            const food = document.getElementById('food-input').value;
+
+            if (!food) {
+                alert('Please enter a food item.');
+                return;
+            }
+
+            // Save to history if not already present
+            if (!historyList.includes(food)) {
+                historyList.push(food);
+                updateHistory();
+            }
+
+            fetch(`/api/nutrition?food=${encodeURIComponent(food)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultsDiv = document.getElementById('results');
+                    if (data && data.nutrition) {
+                        resultsDiv.innerHTML = `
+                            <h2>Nutrition Information:</h2>
+                            <div class="result-item"><strong>Carbs:</strong> ${data.nutrition.carbs} g</div>
+                            <div class="result-item"><strong>Protein:</strong> ${data.nutrition.protein} g</div>
+                            <div class="result-item"><strong>Fat:</strong> ${data.nutrition.fat} g</div>
+                        `;
+                        updateChart(data.nutrition);
+                    } else {
+                        resultsDiv.innerHTML = '<p class="error">No nutrition data found.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching nutrition data:', error);
+                    document.getElementById('results').innerHTML = '<p class="error">Error fetching nutrition data. Please try again later.</p>';
+                });
+        }
+
+        function updateHistory() {
+            const historyListElement = document.getElementById('history-list');
+            historyListElement.innerHTML = '';
+
+            historyList.forEach(food => {
+                const listItem = document.createElement('li');
+                listItem.textContent = food;
+                listItem.onclick = () => {
+                    document.getElementById('food-input').value = food;
+                    fetchNutritionData();
+                };
+                historyListElement.appendChild(listItem);
+            });
+        }
+
+        function updateChart(nutrition) {
+            const ctx = document.getElementById('nutritionChart').getContext('2d');
+            if (chart) {
+                chart.destroy();
+            }
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Carbs', 'Protein', 'Fat'],
+                    datasets: [{
+                        label: 'Nutrition Information',
+                        data: [
+                            nutrition.carbs,
+                            nutrition.protein,
+                            nutrition.fat
+                        ],
+                        backgroundColor: [
+                            '#FF6384',
+                            '#36A2EB',
+                            '#FFCE56'
+                        ],
+                        borderColor: [
+                            '#FF6384',
+                            '#36A2EB',
+                            '#FFCE56'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        // Add event listener for Enter key
+        document.getElementById('food-input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                fetchNutritionData();
+            }
+        });
+
+        function gotoback(){
+    window.location.href = 'index.html'
+}
+    </script>
+</body>
+</html>

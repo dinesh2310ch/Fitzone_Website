@@ -1,0 +1,95 @@
+/* General Styles */
+body {
+    font-family: 'Inria Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/Images/kl.png');
+}
+
+.container {
+    background-color: #e7dcdc;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Heading Styles */
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ff2626; /* Updated to use the specified color */
+}
+
+/* Paragraph and Span Styles */
+p {
+    font-size: 1em;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+#userName {
+    font-weight: bold;
+    color: #ff2626; /* Updated to use the specified color */
+}
+
+/* Button Styles */
+button {
+    font-family: inherit;
+    font-size: 1em;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ff2626; /* Updated to use the specified color */
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #cc1f1f; /* A darker shade of #ff2626 for hover effect */
+}
+
+/* User Details Styles */
+#userDetails {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#userDetails table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#userDetails th,
+#userDetails td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#userDetails th {
+    background-color: #ff2626; /* Updated to use the specified color */
+    color: white;
+}
+
+#userDetails td {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+#userDetails tr:nth-child(even) td {
+    background-color: #f2f2f2;
+}
+
+strong {
+    color: #333;
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="icon" type="image/png" href="Images/blog.png">
+    <title>Blog</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="he">
+            <img src="Images/blog.png" width="50px" alt="">
+            <h1>Blog</h1>
+
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input class="se" type="text" id="search-input" placeholder="Search for blog posts...">
+        </div>
+
+        <!-- Blog Post Cards -->
+        <div class="blog-cards" id="blog-cards">
+            <!-- Blog Post 1 -->
+            <div class="blog-card">
+                <img src="Images/nu.jpg" alt="Nutrition Image">
+                <div class="blog-card-content">
+                    <h2>How to Improve Your Nutrition</h2>
+                    <p>Learn essential tips for better nutrition and maintaining a healthy diet. This post covers
+                        various strategies to enhance your eating habits and improve overall well-being.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 2 -->
+            <div class="blog-card">
+                <img src="Images/exercise111.jpg" alt="Exercise Image">
+                <div class="blog-card-content">
+                    <h2>The Benefits of Regular Exercise</h2>
+                    <p>Discover the numerous benefits of incorporating regular exercise into your daily routine. From
+                        improved mood to better physical health, this post explains why staying active is crucial.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 3 -->
+            <div class="blog-card">
+                <img src="Images/micro.jpg" alt="Macronutrients Image">
+                <div class="blog-card-content">
+                    <h2>Understanding Macronutrients</h2>
+                    <p>Get a comprehensive overview of macronutrients and their role in your diet. This post explains
+                        the importance of carbohydrates, proteins, and fats, and how to balance them effectively.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 4 -->
+            <div class="blog-card">
+                <img src="Images/recipe.jpg" alt="Healthy Recipes Image">
+                <div class="blog-card-content">
+                    <h2>5 Healthy Recipes for Busy People</h2>
+                    <p>Short on time but still want to eat healthy? Check out these quick and nutritious recipes that
+                        fit into any busy schedule. Easy to make and delicious!</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+
+            <!-- Blog Post 5 -->
+            <div class="blog-card">
+                <img src="Images/mentalhealth.jpg" alt="Meditation Image">
+                <div class="blog-card-content">
+                    <h2>The Importance of Mental Health</h2>
+                    <p>Understanding and taking care of your mental health is crucial for overall well-being. This post
+                        discusses various practices to support mental health and manage stress effectively.</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add New Post -->
+        <div class="post-form">
+            <h2>Add New Post</h2>
+            <input type="text" id="post-title" placeholder="Post Title">
+            <textarea id="post-content-input" rows="5" placeholder="Post Content"></textarea>
+            <input type="file" id="post-image-input" accept="image/*">
+            <button onclick="addPost()">Add Post</button>
+            <div class="back">
+                <button class="but" onclick="gotoback()">Back</button>
+            </div>
+            <p class="error" id="error-message"></p>
+        </div>
+    </div>
+
+    <script>
+        const posts = [
+            { title: 'How to Improve Your Nutrition', content: 'Learn essential tips for better nutrition and maintaining a healthy diet. This post covers various strategies to enhance your eating habits and improve overall well-being.', image: 'Images/nu.jpg' },
+            { title: 'The Benefits of Regular Exercise', content: 'Discover the numerous benefits of incorporating regular exercise into your daily routine. From improved mood to better physical health, this post explains why staying active is crucial.', image: 'Images/exercise111.jpg' },
+            { title: 'Understanding Macronutrients', content: 'Get a comprehensive overview of macronutrients and their role in your diet. This post explains the importance of carbohydrates, proteins, and fats, and how to balance them effectively.', image: 'Images/micro.jpg' },
+            { title: '5 Healthy Recipes for Busy People', content: 'Short on time but still want to eat healthy? Check out these quick and nutritious recipes that fit into any busy schedule. Easy to make and delicious!', image: 'Images/recipe.jpg' },
+            { title: 'The Importance of Mental Health', content: 'Understanding and taking care of your mental health is crucial for overall well-being. This post discusses various practices to support mental health and manage stress effectively.', image: 'Images/mentalhealth.jpg' }
+        ];
+
+        function displayPosts(filteredPosts) {
+            const container = document.getElementById('blog-cards');
+            container.innerHTML = filteredPosts.map(post => `
+                <div class="blog-card">
+                    <img src="${post.image}" alt="${post.title}">
+                    <div class="blog-card-content">
+                        <h2>${post.title}</h2>
+                        <p>${post.content}</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addPost() {
+            const title = document.getElementById('post-title').value;
+            const content = document.getElementById('post-content-input').value;
+            const imageInput = document.getElementById('post-image-input');
+            const errorMessage = document.getElementById('error-message');
+            const imageFile = imageInput.files[0];
+
+            if (!title || !content || !imageFile) {
+                errorMessage.textContent = 'All fields are required.';
+                return;
+            }
+
+            errorMessage.textContent = '';
+            const imageUrl = URL.createObjectURL(imageFile);
+            posts.push({ title, content, image: imageUrl });
+            displayPosts(posts);
+
+            // Clear input fields
+            document.getElementById('post-title').value = '';
+            document.getElementById('post-content-input').value = '';
+            imageInput.value = '';
+        }
+
+        function searchPosts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filteredPosts = posts.filter(post =>
+                post.title.toLowerCase().includes(query) || post.content.toLowerCase().includes(query)
+            );
+            displayPosts(filteredPosts);
+        }
+
+        // Initialize the blog page
+        displayPosts(posts);
+
+        // Add event listener for search input
+        document.getElementById('search-input').addEventListener('input', searchPosts);
+        function gotoback() {
+            window.location.href = 'index.html'
+        }
+    </script>
+</body>
+
+</html>

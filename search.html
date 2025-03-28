@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="search.css">
+  <link rel="icon" type="image/png" href="Images/search2.png">
+  <title>Any Search Page</title>
+</head>
+
+<body>
+  <div class="section1">
+    <div class="any-icon">
+      <div>
+        <img width="50px" class="idea" src="Images/search2.png" alt="">
+      </div>
+      <div class="kl1">
+        <a class="any-title" href="#">Any Search page</a>
+      </div>
+    </div>
+    <div class="back-button">
+      <button class="button1" onclick="goBack()">Back</button>
+    </div>
+  </div>
+
+  <div class="section2">
+    <p class="para">In this page you can search anything related to Fitness. Forget
+      generic workout routines! This innovative search portal becomes
+      your personalized fitness playground. No matter your goals or
+      interests, get ready to find exactly what you need. Stuck in a
+      rut with your current routine? Simply search for "effective home
+      workouts for core strength." Our platform delves deep, curating
+      a blend of informative articles, instructional videos, and even
+      personalized workout plans crafted by certified trainers.</p>
+  </div>
+  <div class="section3">
+    <div class="img-2">
+      <img width="600px" class="img-2a" src="Images/search1.png" alt="">
+    </div>
+    <div class="line"></div>
+    <div class="eq">
+      <div class="search-box">
+        <div>
+          <input class="search-title" type="search" name="" id="" placeholder="Search">
+        </div>
+        <div>
+          <button class="but" onclick="go_to_homepage()">
+            <img class="img10" width="35px" src="Images/search3.png" alt="">
+          </button>
+        </div>
+      </div>
+
+      <div class="text-content">
+        <!-- Search results will be displayed here -->
+      </div>
+
+    </div>
+  </div>
+  <div class="o"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.querySelector('.search-title');
+      const searchButton = document.querySelector('.but');
+      const textContentDiv = document.querySelector('.text-content');
+
+      const handleSearch = async () => {
+        const searchTerm = searchInput.value.trim();
+
+        if (searchTerm) {
+          try {
+            const response = await fetch('/search', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ query: searchTerm }),
+            });
+
+            if (response.ok) {
+              const data = await response.json();
+              console.log('Received data:', data); // Log to inspect the data structure
+
+              // Assuming 'data.text' might be an object
+              const text = typeof data.text === 'string' ? data.text : JSON.stringify(data.text) || 'No content available';
+
+              const searchItem = document.createElement('div');
+              searchItem.classList.add('search-item'); // Add class for CSS styling
+              searchItem.textContent = text;
+              textContentDiv.appendChild(searchItem);
+              searchInput.value = '';
+            } else {
+              throw new Error('Failed to fetch the search results');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('Error occurred while fetching search results');
+          }
+        }
+      };
+
+      searchButton.addEventListener('click', handleSearch);
+
+      searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+          handleSearch();
+        }
+      });
+    });
+
+
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+
+</html>

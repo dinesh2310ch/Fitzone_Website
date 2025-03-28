@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <title>Meditation Tracker</title>
+    <link rel="icon" href="Images/tracker2.png">
+    <link rel="stylesheet" href="meditation.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+    <div class="main">
+     
+
+        <div class="kl1">
+            <div class="img1">
+                <img  src="Images/tracker1.png" width="2000px" height="400px" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="section1">
+        <div>
+            <img class="img2" src="Images/tracker2.png" alt="">
+        </div>
+        <div>
+            <h1>Mediation Goal</h1>
+        </div>
+    </div>
+
+
+    <div class="section2">
+        <div class="maina">
+            <div class="main1-a">
+                <div class="heading">
+                    <p>Introduction to Meditation</p>
+                </div>
+                <div class="over">
+                    <p class="head">Brief Overview</p>
+                    <p> Meditation helps in stress reduction, improves focus, and
+                        balances emotions. It involves sitting in a comfortable
+                        posture and focusing on your breath or guided
+                        instructions.</p>
+                </div>
+                <div class="how">
+                    <p class="head">How to Meditate</p>
+                    <p>Sit comfortably with a straight back. </p>
+                    <p> Focus on your natural breath. </p>
+                    <p> Observe your thoughts without judgment.
+                    </p>
+                </div>
+
+            </div>
+            <div class="main1-b">
+                <img class="center" src="Images/tracker5.png" alt="">
+            </div>
+            <div class="main1-c">
+                <div class="heading">
+                    <p> Introduction to Advanced Meditation</p>
+                </div>
+                <div class="over">
+                    <p class="head">Brief Overview</p>
+                    <p> At an advanced level, meditation tracking includes
+                        detailed analytics, custom metrics, and in-depth
+                        reflections. This stage involves integrating meditation
+                        into various aspects of your life and analyzing its impact
+                        with precision.</p>
+                </div>
+                <div class="how">
+                    <p class="head">Techniques:</p>
+                    <p>In-Depth Mindfulness: Focus on subtle emotional and
+                        mental patterns. </p>
+                    <p>Integration Practices: Applying meditation insights
+                        to life situations.</p>
+                    <p> Observe your thoughts without judgment.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mainb">
+            <div class="linea"></div>
+        </div>
+        <div class="mainc">
+            <div class="main1-b">
+
+                <img class="center" src="Images/tracker4.png" alt="">
+
+            </div>
+            <div class="main1-a">
+                <div class="heading">
+                    <p> Introduction to Intermediate Meditation</p>
+                </div>
+                <div class="over">
+                    <p class="head">Brief Overview</p>
+                    <p> At the intermediate level, meditation practices become
+                        more nuanced. You'll explore techniques to deepen your
+                        practice, integrate mindfulness into daily activities,
+                        and track more detailed metrics.</p>
+                </div>
+                <div class="how">
+                    <p class="head">How to Meditate</p>
+                    <p>Extended Mindfulness: Focus on body awareness and
+                        emotional states.</p>
+                    <p>Progressive Relaxation: Deepen relaxation with body
+                        scan and muscle relaxation techniques. </p>
+                    <p>Advanced Breathing Techniques: Experiment with
+                        various breathing patterns.
+                    </p>
+                </div>
+
+            </div>
+            <div class="main1-b">
+
+                <img class="center" src="Images/tracker3.png" alt="">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section3a">
+        <div class="hh">
+            <img width="50px" height="50px" src="Images/tracker2.png" alt="">
+            <h2>Submit Meditation Record</h2>
+        </div>
+
+        <div class="formm">
+            <section  id="submit-section">
+
+                <form id="meditation-form">
+
+             <div class="ff">
+                <div class="k">
+                    <label class="e" for="date">Date :-</label>
+                    <input class="ed" type="date" name="date" required>
+                </div>
+                <div class="k"> <label class="e" for="session_type">Session :-</label>
+                    <input class="ed" type="text" name="session_type" placeholder="Session Type" required>
+                </div>
+                <div class="k"> <label class="e" for="number">Duration</label>
+                    <input class="ed" type="number" name="duration" placeholder="Duration (minutes)" required>
+                </div>
+                <div class="k"> <label class="e" for="notes">Notes :-</label>
+                    <textarea class="ed" name="notes" placeholder="Notes"></textarea>
+                </div>
+             </div>
+             <div class="vut">
+                <button class="oo"  type="submit">Submit Record</button>
+           
+                <button class="ooo" onclick="gotoback()">Back</button>
+             </div>
+
+                   
+                </form>
+                <p class="e" id="meditation-message"></p>
+              
+                <div class="ba">
+                    <a class="b" href="meditation-records.html">View Previous Meditation Records</a>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="ook">
+        <h1>Your Meditation Records</h1>
+
+    <!-- Button to clear displayed records temporarily -->
+    <button id="clear-records">Clear Records</button>
+
+    <!-- Chart container -->
+    <canvas id="meditation-chart" width="1400" height="400"></canvas>
+
+    <!-- Container for displaying records in card format -->
+    <div id="records-container"></div>
+    </div>
+
+    <!-- Link to submit new meditation record -->
+    <a href="meditation.html">Submit New Meditation Record</a>
+
+    <script src="meditation-records.js"></script>
+    <script src="meditation.js"></script>
+    <script>
+        
+        function gotoback(){
+    window.location.href = 'index.html'
+}
+    </script>
+</body>
+
+</html>

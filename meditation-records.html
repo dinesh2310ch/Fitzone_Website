@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Records</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+}
+
+button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#meditation-chart {
+    display: block;
+    margin: 20px auto;
+}
+
+#records-container {
+    padding: 20px;
+}
+
+.record-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    font-size: 16px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>Your Meditation Records</h1>
+
+    <!-- Button to clear displayed records temporarily -->
+    <button id="clear-records">Clear Records</button>
+
+    <!-- Chart container -->
+    <canvas id="meditation-chart" width="400" height="200"></canvas>
+
+    <!-- Container for displaying records in card format -->
+    <div id="records-container"></div>
+
+    <!-- Link to submit new meditation record -->
+    <a href="meditation.html">Submit New Meditation Record</a>
+
+    <script src="meditation-records.js"></script>
+</body>
+</html>

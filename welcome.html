@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="wekcome.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome!</h1>
+        <p>Hello, <span id="userName">User</span>!</p>
+        
+        <div id="userDetails">
+            <!-- User details will be populated here -->
+        </div>
+
+        <button onclick="goToHome()">Home</button>
+        <button onclick="goToInfo()">Fill Information</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/user-details')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        if (data.data) {
+                            const details = data.data;
+                            document.getElementById('userName').textContent = details.name;
+                            document.getElementById('userDetails').innerHTML = `
+                                <p><strong>Gender:</strong> ${details.gender}</p>
+                                <p><strong>Phone:</strong> ${details.phone}</p>
+                                <p><strong>Email:</strong> ${details.email}</p>
+                                <p><strong>Date of Birth:</strong> ${details.dob}</p>
+                                <p><strong>Address:</strong> ${details.address}</p>
+                                <p><strong>Weight:</strong> ${details.weight}</p>
+                                <p><strong>Height:</strong> ${details.height}</p>
+                                <p><strong>Blood Group:</strong> ${details.bloodGroup}</p>
+                                <p><strong>Medical Injuries:</strong> ${details.medicalInjuries}</p>
+                                <p><strong>Fitness Goals:</strong> ${details.fitnessGoals}</p>
+                            `;
+                        } else {
+                            document.getElementById('userDetails').innerHTML = '<p>No details available.</p>';
+                        }
+                    } else {
+                        alert('Failed to load user details');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while fetching user details');
+                });
+        });
+
+        function goToHome() {
+            window.location.href = '/';
+        }
+
+        function goToInfo() {
+            window.location.href = '/information.html';
+        }
+
+        function logout() {
+            fetch('/logout', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        window.location.href = '/login.html'; // Redirect to login page
+                    } else {
+                        alert('Failed to log out');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred during logout');
+                });
+        }
+    </script>
+</body>
+</html>

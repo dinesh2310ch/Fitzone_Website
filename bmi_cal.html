@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="bmi_cal.css">
+  <link rel="icon" type="image/png" href="bmi/icons8bmi48-1@2x.png">
+  <title>BMI Calculator</title>
+</head>
+
+<body>
+  <div class="nav">
+    <a href="#" style="text-decoration: none;">
+      <div class="kl">
+        <div class="kl1">
+          <img width="60px" src="Images/icons8bmi48-1@2x.png" alt="BMI Calculator">
+        </div>
+        <div class="kl2">
+          BMI Calculator
+        </div>
+      </div>
+    </a>
+    <div class="kl3">
+      <button class="back" onclick="goBack()">Back</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="kl4">
+      <div class="main2">
+        <div class="dot"></div>
+        <div class="kl5">
+          What is BMI and How to Calculate?
+        </div>
+      </div>
+      <div class="kll">
+        <div class="arrow">
+          <img src="Images/arrow-1.svg" alt="Arrow">
+        </div>
+        <div class="kl6">
+          <p class="para">
+            The Body Mass Index, or BMI, serves as a stepping stone in discussions about weight and potential health
+            risks. It's a statistical tool that uses a formula based on height and weight to estimate body fat content.
+            This estimation allows healthcare professionals to categorize individuals into weight groups. These groups
+            then indicate an increased risk for certain health problems often associated with excess weight. The appeal
+            of BMI lies in its simplicity. It requires minimal information, making it easy to calculate. Additionally,
+            BMI provides a standardized reference point, allowing healthcare professionals to compare individuals across
+            diverse populations. However, it's crucial to recognize the limitations of BMI. It doesn't directly measure
+            body fat. This means that very muscular individuals, whose bodies naturally have a higher density than fat,
+            might have a high BMI despite having low body fat. Similarly, BMI categories might not be universally
+            accurate for all ethnicities due to potential differences in body composition. In conclusion, while BMI
+            offers a valuable starting point for weight discussions, it shouldn't be the sole indicator of health. It's
+            most effective when used in conjunction with other health assessments conducted by a qualified professional.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main3">
+    <div class="kl10">
+      <img width="600px" height="720px" style="border-radius: 5px;" src="Images/rectangle-11@2x.png"
+        alt="BMI Illustration">
+    </div>
+    <div class="kl9">
+      <form id="bmiForm">
+        <div class="kl12">
+          <div class="i">
+            <div class="gender">
+              <div class="radi">
+                <input type="radio" id="male" name="gender" value="Male" required>
+                <label for="male">
+                  <img class="kl111" width="50px" src="Images/male-1@2x.png" alt="Male">
+                </label>
+                <input type="radio" id="female" name="gender" value="Female" required>
+                <label for="female">
+                  <img class="kl111" width="50px" src="Images/female-1@2x.png" alt="Female">
+                </label>
+              </div>
+              <div id="genderError" style="color: red; font-weight: bold;"></div>
+            </div>
+            <div class="e">
+              <label class="a" for="age">Age (1 year or above):</label>
+              <input class="f" type="number" name="age" id="age" min="1" required>
+              <div id="ageError" style="color: red; font-weight: bold;"></div>
+            </div>
+            <div class="b">
+              <div class="c">
+                <label class="a" for="height">Height (cm):</label>
+                <input class="g" type="number" name="height" id="height" required>
+                <div id="heightError" style="color: red; font-weight: bold;"></div>
+              </div>
+              <div class="c">
+                <label class="a" for="weight">Weight (kg):</label>
+                <input class="g" type="number" name="weight" id="weight" required>
+                <div id="weightError" style="color: red; font-weight: bold;"></div>
+              </div>
+            </div>
+            <div class="ko">
+              <button type="button" class="bf" onclick="calculateBMI()">Calculate</button>
+            </div>
+          </div>
+          <div class="line"></div>
+          <div class="results">
+            <div class="bmi-result">
+            
+              <div id="bmiResult" style="  font-weight: bold;"></div>
+            </div>
+            <div class="bmi-category">
+           
+              <div id="bmiCategory" style=" font-weight: bold;"></div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="de">
+    <p>To get how many calories deficit you want based on BMI result:</p>
+    <button class="back" onclick="window.location.href='calorie.html'">Go to Calories Page</button>
+  </div>
+
+  <script>
+    function goBack() {
+      window.location.href = 'index.html';
+    }
+
+    function calculateBMI() {
+      const form = document.getElementById('bmiForm');
+      const height = parseFloat(form.height.value) / 100; // Convert height to meters
+      const weight = parseFloat(form.weight.value);
+      const age = parseInt(form.age.value);
+      const gender = form.gender.value;
+
+      if (!height || !weight || !age || !gender) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Calculate BMI
+      const bmi = (weight / (height * height)).toFixed(1);
+      document.getElementById('bmiResult').innerText = `BMI: ${bmi}`;
+
+      // Determine BMI Category
+      let category;
+      if (bmi < 18.5) {
+        category = 'Underweight';
+      } else if (bmi < 24.9) {
+        category = 'Normal weight';
+      } else if (bmi < 29.9) {
+        category = 'Overweight';
+      } else {
+        category = 'Obesity';
+      }
+      document.getElementById('bmiCategory').innerText = `Category: ${category}`;
+    }
+  </script>
+</body>
+
+</html>

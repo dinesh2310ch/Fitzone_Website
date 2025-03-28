@@ -1,0 +1,105 @@
+body{
+    background-image: url('Images/kl.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Inria Sans', sans-serif;
+    
+
+}
+.main{
+    background-color: rgb(231, 220, 220);
+    justify-content: center;
+    margin-top: 240px;
+    margin-left: 450px;
+    margin-right: 450px;
+    height: 500px;
+    border-radius: 4px;
+}
+
+.main1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.image{
+    background-color: black;
+    border-radius: 8px;
+}
+h1{
+    text-align: center;
+}
+
+.log{
+    display: flex;
+    flex-direction: column;
+    margin-right: 150px;
+}
+
+.line{
+    margin-left: 105px;
+    margin-top: -15px;
+    height: 4px;
+    border-radius: 0px;
+    background-color: #f84545;
+    width: 35px;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+}
+
+.email{
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 3px;
+}
+.line2{
+    
+    height: 4px;
+    border-radius: 0px;
+    background-color: gray;
+    width: 250px;
+    margin-bottom: 15px;
+}
+
+.password{
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+.but{
+    margin-top: 20px;
+    margin-left: 90px;
+    font-size: 15px;
+    padding-left: 20px;
+    padding-top: 10px;
+    border: none;
+    padding-bottom: 10px;
+    padding-right: 20px;
+    color:white;
+    background-color: #f84545;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.but:hover{
+    opacity: 0.9;
+}
+.ppo{
+    text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.okok{
+    display: flex;
+    flex-direction: column;
+}

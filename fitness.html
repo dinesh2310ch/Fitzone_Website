@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Images/cardio.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fitness.css">
+    <title>Fitness Tracker</title>
+</head>
+
+<body>
+    <div class="main">
+        <!-- Cardio Exercises Section -->
+        <div class="title">
+            <img src="Images/cardio.png" width="50px" alt="">
+            <h1>Cardio Exercise</h1>
+        </div>
+
+        <div class="list1">
+            <img width="300px" height="200px" src="images/running-removebg-preview.png" alt="Running">
+            <div class="list2">
+                <h2>Running</h2>
+                <p>Running is a great way to improve cardiovascular fitness, burn calories, and boost your overall
+                    endurance. Whether on a treadmill or outside, it’s an effective and simple way to stay active.</p>
+            </div>
+        </div>
+
+        <div class="list1">
+
+            <div class="list2">
+                <h2>Cycling</h2>
+                <p>Cycling is a low-impact exercise that strengthens your legs and improves cardiovascular health. It's
+                    also
+                    a great way to explore the outdoors while staying fit.</p>
+
+            </div>
+            <img width="300px" height="200px" src="Images/cyxling-removebg-preview.png" alt="Running">
+        </div>
+
+        <div class="list1">
+            <img width="300px" height="200px" src="Images/rowping-removebg-preview.png" alt="Running">
+            <div class="list2">
+                <h2>Jumping Rope</h2>
+                <p>Jumping rope is an excellent cardio workout that also improves coordination and burns a significant
+                    amount of calories in a short time.</p>
+            </div>
+        </div>
+
+        <div class="list1">
+            <div class="list2">
+                <h2>Swimming</h2>
+                <p>Running is a great way to improve cardiovascular fitness, burn calories, and boost your overall
+                    endurance. Whether on a treadmill or outside, it’s an effective and simple way to stay active.</p>
+            </div>
+            <img width="300px" height="200px" src="Images/swming-removebg-preview.png" alt="Running">
+        </div>
+
+        <div class="list1">
+            <img width="300px" height="200px" src="Images/epic-removebg-preview.png" alt="Running">
+            <div class="list2">
+                <h2>Elliptical Training</h2>
+                <p>Elliptical training offers a low-impact cardio workout that mimics running, without putting stress on
+                    your joints. It’s great for burning calories and building endurance.</p>
+            </div>
+        </div>
+        <!-- Other cardio exercises... -->
+
+    </div>
+  <!-- Form Section -->
+  <div class="kl">
+    <h1>Submit Fitness Record</h1>
+    <form id="fitness-form">
+        <div class="ff">
+            <div class="k">
+                <label class="e" for="date">Date :-</label>
+                <input class="ed" type="date" name="date" required>
+            </div>
+            <div class="k">
+                <label class="e" for="exercise">Exercise :-</label>
+                <input class="ed" type="text" name="exercise" placeholder="Exercise" required pattern="[A-Za-z\s]+" title="Please enter only alphabets and spaces">
+            </div>
+            <div class="k">
+                <label class="e" for="duration">Duration :-</label>
+                <input class="ed" type="number" name="duration" placeholder="Duration (minutes)" required min="1" max="240" title="Duration must be between 1 and 240 minutes">
+            </div>
+            <div class="k">
+                <label class="e" for="calories_burned">Calories Burned :-</label>
+                <input class="ed" type="number" name="calories_burned" placeholder="Calories Burned" required>
+            </div>
+            <div class="k">
+                <label class="e" for="notes">Notes :-</label>
+                <textarea class="ed" name="notes" placeholder="Notes"></textarea>
+            </div>
+        </div>
+        <div class="vut">
+            <button class="oo" type="submit">Submit Record</button>
+            <button class="ooo" type="button" onclick="gotoback()">Back</button>
+        </div>
+        
+    </form>
+
+    <p id="fitness-message"></p>
+    <a href="fitness-records.html">View Previous Fitness Records</a>
+</div>
+
+<div class="okm">
+    <h1>Your Fitness Records</h1>
+  <div class="klol">
+    <div class="chart-container">
+        <h2>Exercise Duration Breakdown</h2>
+        <canvas id="durationChart"></canvas>
+    </div>
+    
+    <div class="chart-container">
+        <h2>Calories Burned Breakdown</h2>
+        <canvas id="caloriesChart"></canvas>
+    </div>
+  </div>
+
+    <div id="records-container"></div>
+    
+    <div class="button-container"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="fitness-records.js"></script>
+
+<!-- JavaScript -->
+<script>
+    document.getElementById('fitness-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const data = {
+            date: formData.get('date'),
+            exercise: formData.get('exercise'),
+            duration: formData.get('duration'),
+            calories_burned: formData.get('calories_burned'),
+            notes: formData.get('notes')
+        };
+
+        try {
+            const response = await fetch('/submit-fitness', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            document.getElementById('fitness-message').textContent = result.message;
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('fitness-message').textContent = 'An error occurred. Please try again.';
+        }
+    });
+
+    function gotoback(){
+        window.location.href = 'index.html';
+    }
+</script>
+</body>
+
+</html>

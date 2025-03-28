@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body background="Images/kl.png">
+    <div class="main">
+        <div class="main1">
+            <div class="log">
+                <form id="registerForm">
+                    <div class="title">
+                        <h1>Register</h1>
+                        <div class="line"></div>
+                    </div>
+                    <div class="info">
+                        <input type="text" id="name" class="email" name="name" placeholder="Name" required>
+                        <div class="line2"></div>
+                        <input type="email" id="email" name="email" placeholder="Email" class="email" required>
+                        <div class="line2"></div>
+                        <input type="password" id="password" name="password" class="password" placeholder="Password" required>
+                        <div class="line2"></div>
+                    </div>
+                    <div>
+                        <button class="but" type="submit">Register</button>
+                    </div>
+                    <a class="ppo" href="login.html">Go to Login</a>
+                </form>
+            </div>
+            <div class="image">
+                <img src="Images/rectangle-2@2x.png" width="470px" height="496px" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                password: formData.get('password')
+            };
+
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);
+                        window.location.href = '/login.html'; // Redirect to login page
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred during registration');
+                });
+        });
+    </script>
+</body>
+
+</html>

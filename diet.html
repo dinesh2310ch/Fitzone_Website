@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Images/diet2.png">
+    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="diet.css">
+
+</head>
+
+<body>
+    <div class="section1">
+        <div class="a1">
+            <img class="im" src="Images/diet1.png" alt="">
+        </div>
+        <div class="a2">
+            <h1>Deit Tracker & Progress Tracker</h1>
+        </div>
+    </div>
+
+
+    <form id="diet-form">
+        <div class="section2">
+            <div class="date1">
+                <label class="d" for="date">Date:</label>
+                <input class="da" type="date" id="date" name="date" required><br>
+            </div>
+
+            <div class="meal">
+                <div class="img1">
+                    <img src="Images/diet2.png" width="50px" height="50px" alt="">
+                    <h3 class="m">Meal Log</h3>
+                </div>
+
+                <div class="meal1">
+                    <div class="meal2">
+                        <label class="e" for="breakfast">Breakfast:</label>
+                        <input class="ed" type="text" id="breakfast" name="breakfast">
+                        <label class="e" for="breakfast-calories">Breakfast Calories:</label>
+                        <input class="ed" type="number" id="breakfast-calories" name="breakfast-calories">
+                    </div>
+                    <div class="meal2">
+                        <label class="e" for="lunch">Lunch:</label>
+                        <input class="ed" type="text" id="lunch" name="lunch">
+                        <label class="e" for="lunch-calories">Lunch Calories:</label>
+                        <input class="ed" type="number" id="lunch-calories" name="lunch-calories">
+                    </div>
+                    <div class="line1"></div>
+                    <div class="meal2">
+                        <label class="e" for="dinner">Dinner:</label>
+                        <input class="ed" type="text" id="dinner" name="dinner">
+                        <label class="e" for="dinner-calories">Dinner Calories:</label>
+                        <input class="ed" type="number" id="dinner-calories" name="dinner-calories">
+                    </div>
+                    <div class="meal2">
+
+                        <label class="e" for="snacks">Snacks:</label>
+                        <input class="ed" type="text" id="snacks" name="snacks">
+                        <label class="e" for="snacks-calories">Snacks Calories:</label>
+                        <input class="ed" type="number" id="snacks-calories" name="snacks-calories">
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal">
+                <div class="img1">
+                    <img src="Images/diet3.png" width="50px" height="50px" alt="">
+                    <h3 class="m">Hydration Log</h3>
+                </div>
+
+                <div class="meal1">
+                    <div class="meal2">
+
+                        <label class="e" for="hydration-goal">Hydration Goal (L):</label>
+                        <input class="ed" type="number" step="0.1" id="hydration-goal" name="hydration-goal">
+                    </div>
+                    <div class="line2"></div>
+                    <div class="meal2">
+
+                        <label class="e" for="hydration-actual">Hydration Actual (L):</label>
+                        <input class="ed" type="number" step="0.1" id="hydration-actual" name="hydration-actual">
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal">
+                <div class="img1">
+                    <img src="Images/diet4.png" width="50px" height="50px" alt="">
+                    <h3 class="m">Nutritient Log</h3>
+                </div>
+
+                <div class="meal1">
+                    <div class="meal2">
+
+                        <label class="e" for="protein">Protein (g):</label>
+                        <input class="ed" type="number" id="protein" name="protein">
+                    </div>
+                    <div class="line2"></div>
+                    <div class="meal2">
+
+                        <label class="e" for="fats">Fats (g):</label>
+                        <input class="ed" type="number" id="fats" name="fats">
+                    </div>
+                    <div class="line2"></div>
+                    <div class="meal2">
+
+                        <label class="e" for="carbs">Carbs (g):</label>
+                        <input class="ed" type="number" id="carbs" name="carbs">
+
+                    </div>
+                    <div class="line2"></div>
+                    <div class="meal2">
+
+                        <label class="e" for="calories-burned">Calories Burned:</label>
+                        <input class="ed" type="number" id="calories-burned" name="calories-burned">
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal">
+                <div class="img1">
+                    <img src="Images/diet5.png" width="50px" height="50px" alt="">
+                    <h3 class="m">Mood & Energy Log</h3>
+
+                </div>
+                <div class="h22">
+                    <h4 class="f">Mood :- (Good, Bad , Netrul)</h4>
+                    <h4 class="f">Energy :- (High or low)</h4>
+                </div>
+
+                <div class="meal1">
+                    <div class="meal2">
+
+                        <label class="e" for="mood">Mood:</label>
+                        <input class="ed" type="text" id="mood" name="mood">
+
+                    </div>
+                    <div class="line2"></div>
+                    <div class="meal2">
+
+                        <label class="e" for="energy">Energy Level:</label>
+                        <input class="ed" type="text" id="energy" name="energy">
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="ool">
+                <button class="save-btn" type="button" id="save-btn">Save</button>
+                <button type="button" id="refresh-btn" class="refresh-btn">Refresh</button>    
+                <button class="save-btn" onclick="goBack()">Back</button>
+            </div>
+        </div>
+    </form>
+    <div class="section3">
+        <h2>Previous Diet Records</h2>
+        <table id="diet-records">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Breakfast</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                    <th>Snacks</th>
+                    <th>Calories</th>
+                    <th>Mood</th>
+                    <th>Energy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Records will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    <div class="section4">
+        <h2>Diet Charts</h2>
+        <div class="sec2">
+            <div class="chart-container">
+                <h3>Meal Distribution</h3>
+                <canvas id="meal-chart" class="meal-c" width="200" height="100"></canvas>
+            </div>
+        </div>
+        <div class="sec">
+            <div class="chart-container">
+                <h3>Mood Distribution</h3>
+                <canvas id="mood-chart" width="400" height="200"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Energy Distribution</h3>
+                <canvas id="energy-chart" width="400" height="200"></canvas>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="diet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        
+    function goBack() {
+        window.location.href = 'index.html'; // Adjust to your home page URL
+    }
+    </script>
+
+</body>
+
+</html>

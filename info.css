@@ -1,0 +1,264 @@
+/* 
+  --color-tomato-100: #f84545;
+  --color-white: #fff;
+  --color-black: #000;
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: rgb(231, 220, 220);
+ font-family: 'Roboto';
+  }
+  
+  .personal-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 25px;
+  }
+  
+  .resume-2-icon {
+    border-radius: 4px;
+    width: 50px;
+    height: 40px;
+  }
+  
+  .personal-detail-wrapper {
+    margin-left: 6px;
+  }
+  
+  .personal-detail {
+    font-weight: bold;
+    color: #ff2626;
+  }
+  
+  .frame-child {
+    display: flex;
+    background-color: black;
+    height: 2px;
+    margin: 25px 70px;
+  }
+  
+  .name-gender-phone-email {
+    width: 100%;
+  }
+  
+  .removebg-preview-1-icon {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .person {
+    display: flex;
+    justify-content: center;
+    margin: 100px auto;
+    width: 100%;
+  }
+  
+  .p1 {
+    width: 400px;
+  }
+  
+  .image1 {
+    width: 400px;
+    margin-left: 200px;
+  }
+  
+  .name-gender-phone-email {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .name- {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+  
+  }
+  
+  .form-input {
+    width: calc(100% - 40px); /* Adjust to fit within the container */
+    margin: 2px 20px;
+    height: 30px;
+    border: 2px solid black;
+    background-color: transparent;
+    border-radius: 3px;
+    font-size: 15px;
+    padding: 0 10px;
+  }
+  
+  .gender-phone-email {
+    margin-top: 20px;
+  }
+  
+  b {
+    margin-right: 20px;
+  }
+  
+  .gender- {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    
+  }
+  
+  .radi {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .phone-number- {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    
+  }
+  
+  
+  .email-container,
+  .phone-email,
+  .address {
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 20px;
+    margin-left: 20px;
+    
+  }
+  .klm{
+    margin-top: 20px;
+  }
+  .addr{
+    padding-top: 20px;
+  }
+  
+  .e{width: calc(100% - 20px); /* Adjust to fit within the container */
+    margin: 2px 2px;
+    height: 30px;
+    border: 2px solid black;
+    background-color: transparent;
+    border-radius: 3px;
+    font-size: 15px;
+    padding: 0 10px;}
+  
+    .g{width: calc(100% - 20px); /* Adjust to fit within the container */
+      margin: 2px 2px;
+      height: 30px;
+      border: 2px solid black;
+      background-color: transparent;
+      border-radius: 3px;
+      font-size: 15px;
+      padding: 0 10px;}
+  
+      .f{width: calc(100% - 20px); /* Adjust to fit within the container */
+        margin: 2px 2px;
+        height: 30px;
+        border: 2px solid black;
+        background-color: transparent;
+        border-radius: 3px;
+        font-size: 15px;
+        padding: 0 10px;}
+  
+  
+  
+  .person1 {
+    display: flex;
+    justify-content: center;
+    margin: 100px auto;
+    width: 100%;
+  }
+  .removebg-preview-2-icon {
+    width: 300px;
+    display: block;
+    margin: 20px auto;
+  }
+  
+  .image2 {
+    width: 400px;
+    margin-left: -100px;
+    margin-right: 200px;
+  }
+  
+  .p2{
+      width: 400px;
+  
+  }
+  .weight-kg- {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    padding-top: 20px;
+    
+  }
+  .height-cm {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    
+  }
+  .blood-group- {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+    
+  }
+  .weight-kg-wrapper{
+    margin-bottom: 20px;
+  }
+  
+  .last{
+    display: flex;
+  justify-content: center;
+    text-align: center;
+  }
+  
+  .last{
+    margin-bottom: 70px;
+    margin-top: 50px;
+  }
+  
+  .s{
+    border: none;
+    padding-left: 28px;
+    padding-right: 28px;
+    background-color:  #ff2626;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 50px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: ease-out;
+    cursor: pointer;
+  }
+  .s:hover{
+    opacity: 0.88;
+  }
+  .b{
+    border: none;
+    padding-left: 28px;
+    padding-right: 28px;
+    background-color:  #ff2626;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  
+    margin-left: 50px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: ease-out;
+    cursor: pointer;
+  }
+  .b:hover{
+    opacity: 0.88;
+  }
+  
+  

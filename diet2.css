@@ -1,0 +1,127 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 50px;
+     margin: 0px;
+     background-color: #e7dcdc;
+     font-family: 'Inria Sans', sans-serif;
+ }
+ h1 {
+     color: #ff2626;
+     margin-left: 20px;
+     text-align: center;
+ }
+ #container {
+     border: 1px solid black;
+     background-color: transparent;
+     max-width: 1500px;
+     margin: 0 auto;
+     padding: 20px;
+     border-radius: 3px;
+ }
+ #description {
+     margin-bottom: 20px;
+     padding: 10px;
+     margin-top: 50px;
+     background-color: transparent;
+     border: 1px solid black;
+     border-radius: 4px;
+     font-size: 20px;
+ }
+ #description h2 {
+     margin-top: 0;
+ }
+ .h1{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: #ff2626;
+ }
+ 
+ .h111{
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+ }
+ .but{
+     margin-left: 20px;
+     background-color: #ff2626;
+     color: white;
+     font-size: 15px;
+     font-weight: bold;
+     border:none;
+     border-radius: 3px;
+     width: 200px;
+     height: 40px;
+ cursor: pointer;
+ }
+ .but:hover{
+     opacity: .8;
+ }
+ label {
+     font-weight: bold;
+     display: block;
+ font-size: 20px;
+     margin-top: 50px;
+ }
+ input[type="text"] {
+     width: calc(100% - 22px);
+     padding: 10px;
+     background-color: transparent;
+     margin-bottom: 10px;
+     border: 2px solid black;
+     margin-top: 10px;
+     border-radius: 4px;
+ }
+ 
+ #results {
+     margin-top: 20px;
+ }
+ .result-item {
+     margin-bottom: 10px;
+     padding: 10px;
+     background-color: #f9f9f9;
+     border-left: 4px solid #ff2626;
+     border-radius: 4px;
+ }
+ .result-item strong {
+     color: #ff2626;
+ }
+ .error {
+     color: red;
+     font-weight: bold;
+ }
+ #history {
+     margin-top: 20px;
+     padding-top: 10px;
+     border-top: 1px solid #ddd;
+ }
+ #history h2 {
+     font-size: 18px;
+     margin-bottom: 10px;
+ }
+ #history ul {
+     list-style-type: none;
+     padding: 0;
+ }
+ #history ul li {
+     margin-bottom: 10px;
+     padding: 10px;
+     background-color: transparent;
+     border-left: 4px solid #ff2626;
+     border-radius: 4px;
+     cursor: pointer;
+ }
+ #history ul li:hover {
+     background-color: #e9e9e9;
+ }
+ #chart-container {
+     margin-top: 20px;
+ }
+ canvas {
+     width: 100% !important;
+     height: 400px;
+ }
+ .back{
+    display: flex;
+    justify-content: center;
+ }
